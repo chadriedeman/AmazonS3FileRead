@@ -1,6 +1,6 @@
 # AmazonS3FileRead
 
-## Exercise
+## Exercise:
 
 ### Language To Use
 
