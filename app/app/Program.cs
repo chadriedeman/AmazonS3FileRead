@@ -13,16 +13,18 @@ namespace app
             var rawZippedFiles = s3Interface.GetZippedFileContentsFromS3Bucket("principalinterview", "alkirempi.zip")
                 .Result;
 
-            var zippedFileParser = new ZippedFileParser();
+            var zippedFileHelper = new ZippedFileHelper();
 
             var zippedFiles = new List<ZippedFile>();
 
-            foreach(var rawZippedFile in rawZippedFiles)
+            foreach (var rawZippedFile in rawZippedFiles)
             {
-                zippedFiles.Add(zippedFileParser.ParseZippedFileContentsFromString(rawZippedFile));
+                zippedFiles.Add(zippedFileHelper.ParseZippedFileContentsFromString(rawZippedFile));
             }
 
-            // TODO:
+            var mergedZippedFile = zippedFileHelper.MergeZippedFilesOnCommonColumn(zippedFiles);
+
+            zippedFileHelper.PrintZippedFileContents(mergedZippedFile);
         }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using app.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace app
 {
-    public class ZippedFileParser
+    public class ZippedFileHelper
     {
         public ZippedFile ParseZippedFileContentsFromString(string rawZippedFileContents)
         {
@@ -19,6 +20,23 @@ namespace app
             zippedFile.Rows = rows.GetRange(1, rows.Count - 1);
 
             return zippedFile;
+        }
+
+        public ZippedFile MergeZippedFilesOnCommonColumn(List<ZippedFile> zippedFiles)
+        {
+
+
+            return null; // TODO
+        }
+
+        public void PrintZippedFileContents(ZippedFile zippedFile)
+        {
+            Console.WriteLine(string.Join(',', zippedFile.Columns));
+
+            foreach(var row in zippedFile.Rows)
+            {
+                Console.WriteLine(string.Join(',', zippedFile.Rows));
+            }
         }
     }
 }
