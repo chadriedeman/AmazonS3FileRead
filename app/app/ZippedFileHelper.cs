@@ -24,9 +24,27 @@ namespace app
 
         public ZippedFile MergeZippedFilesOnCommonColumn(List<ZippedFile> zippedFiles)
         {
+            if (!zippedFiles.Any())
+                return new ZippedFile();
 
+            var mergedZipFile = new ZippedFile
+            {
+                Columns = zippedFiles[0].Columns,
+                Rows = zippedFiles[0].Rows
+            };
 
-            return null; // TODO
+            foreach (var column in zippedFiles[0].Columns)
+            {
+                foreach (var zippedFile in zippedFiles.GetRange(1, zippedFiles.Count - 1))
+                {
+                    if (zippedFile.Columns.Any(i => i == column))
+                    {
+                        // TODO: Add that column's data to the merged zip file
+                    }
+                }
+            }
+
+            return mergedZipFile; 
         }
 
         public void PrintZippedFileContents(ZippedFile zippedFile)
