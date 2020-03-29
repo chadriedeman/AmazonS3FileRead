@@ -47,7 +47,8 @@ namespace app
 
             catch (Exception ex)
             {
-                return null; // TODO
+                Console.WriteLine($"An error occurred when trying to retrive {keyName} from {bucketName}:" + Environment.NewLine + $"{ex.Message}");
+                throw ex;
             }
         }
     }

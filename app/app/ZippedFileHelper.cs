@@ -35,10 +35,14 @@ namespace app
 
             foreach (var column in zippedFiles[0].Columns)
             {
-                foreach (var zippedFile in zippedFiles.GetRange(1, zippedFiles.Count - 1))
+                foreach (var zippedFile in zippedFiles.GetRange(1, zippedFiles.Count - 1)) 
                 {
-                    if (zippedFile.Columns.Any(i => i == column))
+                    var matchingColumn = zippedFile.Columns.FirstOrDefault(i => i == column);
+
+                    if (matchingColumn != null)
                     {
+                        var indexOfMatchingColumn = zippedFile.Columns.IndexOf(matchingColumn);
+
                         // TODO: Add that column's data to the merged zip file
                     }
                 }
